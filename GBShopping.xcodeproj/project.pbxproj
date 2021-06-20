@@ -102,9 +102,8 @@
 				F44A9A38267F5C5F00441CCF /* App */,
 				F44A9A3D267F5C9100441CCF /* Core */,
 				F44A9A3F267F5CA700441CCF /* Environments */,
-				F44A9A13267F47A500441CCF /* LaunchScreen.storyboard */,
-				F44A9A0E267F47A400441CCF /* Main.storyboard */,
 				F44A9A3E267F5C9900441CCF /* Resources */,
+				F44A9A0E267F47A400441CCF /* Main.storyboard */,
 				F44A9A0C267F47A400441CCF /* ViewController.swift */,
 			);
 			path = GBShopping;
@@ -180,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				F44A9A11267F47A500441CCF /* Assets.xcassets */,
+				F44A9A13267F47A500441CCF /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
