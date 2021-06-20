@@ -99,13 +99,12 @@
 		F44A9A07267F47A400441CCF /* GBShopping */ = {
 			isa = PBXGroup;
 			children = (
-				F44A9A08267F47A400441CCF /* AppDelegate.swift */,
-				F44A9A0A267F47A400441CCF /* SceneDelegate.swift */,
-				F44A9A0C267F47A400441CCF /* ViewController.swift */,
+				F44A9A38267F5C5F00441CCF /* App */,
+				F44A9A3D267F5C9100441CCF /* Core */,
+				F44A9A3F267F5CA700441CCF /* Environments */,
+				F44A9A3E267F5C9900441CCF /* Resources */,
 				F44A9A0E267F47A400441CCF /* Main.storyboard */,
-				F44A9A11267F47A500441CCF /* Assets.xcassets */,
-				F44A9A13267F47A500441CCF /* LaunchScreen.storyboard */,
-				F44A9A16267F47A500441CCF /* Info.plist */,
+				F44A9A0C267F47A400441CCF /* ViewController.swift */,
 			);
 			path = GBShopping;
 			sourceTree = "<group>";
@@ -126,6 +125,71 @@
 				F44A9A2C267F47A500441CCF /* Info.plist */,
 			);
 			path = GBShoppingUITests;
+			sourceTree = "<group>";
+		};
+		F44A9A38267F5C5F00441CCF /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F44A9A08267F47A400441CCF /* AppDelegate.swift */,
+				F44A9A0A267F47A400441CCF /* SceneDelegate.swift */,
+				F44A9A3B267F5C7C00441CCF /* Assembly */,
+				F44A9A39267F5C6600441CCF /* BusinessLogic */,
+				F44A9A3A267F5C7200441CCF /* Entity */,
+				F44A9A3C267F5C8600441CCF /* Flows */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F44A9A39267F5C6600441CCF /* BusinessLogic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BusinessLogic;
+			sourceTree = "<group>";
+		};
+		F44A9A3A267F5C7200441CCF /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		F44A9A3B267F5C7C00441CCF /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		F44A9A3C267F5C8600441CCF /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		F44A9A3D267F5C9100441CCF /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		F44A9A3E267F5C9900441CCF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F44A9A11267F47A500441CCF /* Assets.xcassets */,
+				F44A9A13267F47A500441CCF /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F44A9A3F267F5CA700441CCF /* Environments */ = {
+			isa = PBXGroup;
+			children = (
+				F44A9A16267F47A500441CCF /* Info.plist */,
+			);
+			path = Environments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,7 +502,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YKX9VWS6ZS;
-				INFOPLIST_FILE = GBShopping/Info.plist;
+				INFOPLIST_FILE = GBShopping/Environments/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,7 +521,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YKX9VWS6ZS;
-				INFOPLIST_FILE = GBShopping/Info.plist;
+				INFOPLIST_FILE = GBShopping/Environments/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
