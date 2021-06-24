@@ -1,5 +1,5 @@
 //
-//  LogoutResult.swift
+//  OnlyResult.swift
 //  GBShopping
 //
 //  Created by Grigory Stolyarov on 24.06.2021.
@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct LogoutResult: Codable {
+struct OnlyResult: Codable {
     let result: Int
 }
