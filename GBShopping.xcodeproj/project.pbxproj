@@ -30,6 +30,8 @@
 		F4DD9BE02684A1CF00126EE1 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD9BDF2684A1CF00126EE1 /* RequestFactory.swift */; };
 		F4DD9BE22684A99000126EE1 /* OnlyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD9BE12684A99000126EE1 /* OnlyResult.swift */; };
 		F4DD9BE42684B5F800126EE1 /* RegisterUserResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD9BE32684B5F800126EE1 /* RegisterUserResult.swift */; };
+		F4DD9BEE2689FDD400126EE1 /* ResponseCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD9BED2689FDD400126EE1 /* ResponseCodableTests.swift */; };
+		F4DD9BF0268A09D600126EE1 /* AuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD9BEF268A09D600126EE1 /* AuthTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,11 @@
 		F4DD9BDF2684A1CF00126EE1 /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		F4DD9BE12684A99000126EE1 /* OnlyResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyResult.swift; sourceTree = "<group>"; };
 		F4DD9BE32684B5F800126EE1 /* RegisterUserResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserResult.swift; sourceTree = "<group>"; };
+		F4DD9BEA2689F6BE00126EE1 /* UnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnitTests.xctestplan; sourceTree = "<group>"; };
+		F4DD9BEB2689F6D400126EE1 /* UITests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UITests.xctestplan; sourceTree = "<group>"; };
+		F4DD9BEC2689F6F100126EE1 /* AllTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = AllTests.xctestplan; sourceTree = "<group>"; };
+		F4DD9BED2689FDD400126EE1 /* ResponseCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCodableTests.swift; sourceTree = "<group>"; };
+		F4DD9BEF268A09D600126EE1 /* AuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +148,7 @@
 		F44A99FC267F47A400441CCF = {
 			isa = PBXGroup;
 			children = (
+				F4DD9BE92689F5A900126EE1 /* TestPlans */,
 				F44A9A07267F47A400441CCF /* GBShopping */,
 				F44A9A1E267F47A500441CCF /* GBShoppingTests */,
 				F44A9A29267F47A500441CCF /* GBShoppingUITests */,
@@ -178,6 +186,8 @@
 			children = (
 				F44A9A1F267F47A500441CCF /* GBShoppingTests.swift */,
 				F44A9A21267F47A500441CCF /* Info.plist */,
+				F4DD9BED2689FDD400126EE1 /* ResponseCodableTests.swift */,
+				F4DD9BEF268A09D600126EE1 /* AuthTests.swift */,
 			);
 			path = GBShoppingTests;
 			sourceTree = "<group>";
@@ -282,6 +292,16 @@
 				F4DD9BDF2684A1CF00126EE1 /* RequestFactory.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		F4DD9BE92689F5A900126EE1 /* TestPlans */ = {
+			isa = PBXGroup;
+			children = (
+				F4DD9BEC2689F6F100126EE1 /* AllTests.xctestplan */,
+				F4DD9BEB2689F6D400126EE1 /* UITests.xctestplan */,
+				F4DD9BEA2689F6BE00126EE1 /* UnitTests.xctestplan */,
+			);
+			path = TestPlans;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -545,6 +565,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F44A9A20267F47A500441CCF /* GBShoppingTests.swift in Sources */,
+				F4DD9BF0268A09D600126EE1 /* AuthTests.swift in Sources */,
+				F4DD9BEE2689FDD400126EE1 /* ResponseCodableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
