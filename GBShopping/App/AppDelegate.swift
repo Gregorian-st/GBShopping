@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let auth = requestFactory.makeAuthRequestFatory()
+        let product = requestFactory.makeProductRequestFatory()
         
         auth.login(loginName: "Somebody", password: "mypassword") { response in
             switch response.result {
@@ -34,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        auth.logout() { response in
+        auth.logout { response in
             switch response.result {
             case .success(let logout):
                 print(logout)
@@ -47,6 +48,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             switch response.result {
             case .success(let registerUser):
                 print(registerUser)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        product.catalogData { response in
+            switch response.result {
+            case .success(let products):
+                print(products)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        product.getGoodById(productId: 123) { response in
+            switch response.result {
+            case .success(let product):
+                print(product)
             case .failure(let error):
                 print(error.localizedDescription)
             }
