@@ -10,6 +10,7 @@
 		21FA17F136849AEEC23FEBC9 /* Pods_GBShopping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC6972F1EFAE0DEFF811D784 /* Pods_GBShopping.framework */; };
 		6F7D9D10B0844100A7FEE5DA /* Pods_GBShoppingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B66220ACE7D12B7896E291 /* Pods_GBShoppingTests.framework */; };
 		DE980776BE2018F9C2340627 /* Pods_GBShopping_GBShoppingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2CB62685F75072971F51A3 /* Pods_GBShopping_GBShoppingUITests.framework */; };
+		F432BEC2268A18E300FF58CF /* ProductTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F432BEC1268A18E300FF58CF /* ProductTests.swift */; };
 		F44A9A09267F47A400441CCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44A9A08267F47A400441CCF /* AppDelegate.swift */; };
 		F44A9A0B267F47A400441CCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44A9A0A267F47A400441CCF /* SceneDelegate.swift */; };
 		F44A9A0D267F47A400441CCF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44A9A0C267F47A400441CCF /* ViewController.swift */; };
@@ -61,6 +62,7 @@
 		D6B66220ACE7D12B7896E291 /* Pods_GBShoppingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GBShoppingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B3E48C9BD77C7A57575DC1 /* Pods-GBShopping.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBShopping.release.xcconfig"; path = "Target Support Files/Pods-GBShopping/Pods-GBShopping.release.xcconfig"; sourceTree = "<group>"; };
 		EC6972F1EFAE0DEFF811D784 /* Pods_GBShopping.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GBShopping.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F432BEC1268A18E300FF58CF /* ProductTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTests.swift; sourceTree = "<group>"; };
 		F44A9A05267F47A400441CCF /* GBShopping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBShopping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44A9A08267F47A400441CCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F44A9A0A267F47A400441CCF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				F44A9A21267F47A500441CCF /* Info.plist */,
 				F4DD9BED2689FDD400126EE1 /* ResponseCodableTests.swift */,
 				F4DD9BEF268A09D600126EE1 /* AuthTests.swift */,
+				F432BEC1268A18E300FF58CF /* ProductTests.swift */,
 			);
 			path = GBShoppingTests;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F44A9A20267F47A500441CCF /* GBShoppingTests.swift in Sources */,
+				F432BEC2268A18E300FF58CF /* ProductTests.swift in Sources */,
 				F4DD9BF0268A09D600126EE1 /* AuthTests.swift in Sources */,
 				F4DD9BEE2689FDD400126EE1 /* ResponseCodableTests.swift in Sources */,
 			);
