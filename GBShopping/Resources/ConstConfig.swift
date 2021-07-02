@@ -8,5 +8,6 @@
 import Foundation
 
 struct ConstConfig {
-    static let baseURLString = "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/"
+//    static let baseURLString = "http://127.0.0.1:8080/"
+    static let baseURLString = "https://remembrance-zed-73259.herokuapp.com/"
 }

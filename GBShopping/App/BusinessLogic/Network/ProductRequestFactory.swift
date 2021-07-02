@@ -9,7 +9,7 @@ import Alamofire
 
 protocol ProductRequestFactory {
     
-    func catalogData(completionHandler: @escaping (AFDataResponse<[ProductCatalogResult]>) -> Void)
+    func catalogData(categoryId: Int, pageNumber: Int, completionHandler: @escaping (AFDataResponse<ProductCatalogResult>) -> Void)
     func getGoodById(productId: Int, completionHandler: @escaping (AFDataResponse<ProductSingleResult>) -> Void)
 
 }

@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let auth = requestFactory.makeAuthRequestFatory()
         let product = requestFactory.makeProductRequestFatory()
         
-        auth.login(loginName: "Somebody", password: "mypassword") { response in
+        auth.login(loginName: "Somebody", password: "mypassword", cookie: "Param=Value") { response in
             switch response.result {
             case .success(let login):
                 print(login)
@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(error.localizedDescription)
             }
         }
-        
-        auth.changeUserData(loginName: "Somebody", password: "mypassword", userName: "Nick", userLastName: "Cage") { response in
+
+        auth.changeUserData(userId: 123, loginName: "Greg", password: "GregPWD", email: "user@domain.com", gender: "m", creditCard: "1234-5678-9012-3456", bio: "Some biography") { response in
             switch response.result {
             case .success(let changeUserData):
                 print(changeUserData)
@@ -34,8 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(error.localizedDescription)
             }
         }
-        
-        auth.logout { response in
+
+        auth.logout(userId: 123) { response in
             switch response.result {
             case .success(let logout):
                 print(logout)
@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        auth.registerUser(loginName: "Greg", password: "GregPWD", userName: "Gregor", userLastName: "Joiner") { response in
+        auth.registerUser(loginName: "Greg", password: "GregPWD", email: "user@domain.com", gender: "m", creditCard: "1234-5678-9012-3456", bio: "Some biography") { response in
             switch response.result {
             case .success(let registerUser):
                 print(registerUser)
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        product.catalogData { response in
+        product.catalogData(categoryId: 2, pageNumber: 1) { response in
             switch response.result {
             case .success(let products):
                 print(products)
@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(error.localizedDescription)
             }
         }
-        
+
         product.getGoodById(productId: 123) { response in
             switch response.result {
             case .success(let product):

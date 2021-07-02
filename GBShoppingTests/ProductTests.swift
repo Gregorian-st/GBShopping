@@ -27,10 +27,10 @@ class ProductTests: XCTestCase {
         let product = try XCTUnwrap(requestFactory).makeProductRequestFatory()
         let catalogDataExpectation = expectation(description: "Catalog Data Expectation")
         
-        product.catalogData() { response in
+        product.catalogData(categoryId: 2, pageNumber: 1) { response in
             switch response.result {
-            case .success(let products):
-                XCTAssertGreaterThan(products.count, 0)
+            case .success(let catalog):
+                XCTAssertGreaterThan(catalog.products.count, 0)
                 catalogDataExpectation.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)
@@ -48,7 +48,6 @@ class ProductTests: XCTestCase {
             switch response.result {
             case .success(let product):
                 XCTAssertEqual(product.result, 1)
-                XCTAssertEqual(product.name, "Ноутбук")
                 getGoodByIdExpectation.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)
