@@ -1,0 +1,44 @@
+{
+  "configurations" : [
+    {
+      "id" : "1B4D3E5C-F614-4892-8D44-EAD4EC86FFDA",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:GBShopping.xcodeproj",
+          "identifier" : "F44A9A04267F47A400441CCF",
+          "name" : "GBShopping"
+        }
+      ]
+    },
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:GBShopping.xcodeproj",
+      "identifier" : "F44A9A04267F47A400441CCF",
+      "name" : "GBShopping"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:GBShopping.xcodeproj",
+        "identifier" : "F44A9A1A267F47A500441CCF",
+        "name" : "GBShoppingTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:GBShopping.xcodeproj",
+        "identifier" : "F44A9A25267F47A500441CCF",
+        "name" : "GBShoppingUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
