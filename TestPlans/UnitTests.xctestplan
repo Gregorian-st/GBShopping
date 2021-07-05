@@ -26,6 +26,9 @@
   },
   "testTargets" : [
     {
+      "skippedTests" : [
+        "GBShoppingTests"
+      ],
       "target" : {
         "containerPath" : "container:GBShopping.xcodeproj",
         "identifier" : "F44A9A1A267F47A500441CCF",
