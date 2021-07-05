@@ -1,5 +1,5 @@
 //
-//  ProductCatalogResult.swift
+//  ProductCatalog.swift
 //  GBShopping
 //
 //  Created by Grigory Stolyarov on 29.06.2021.
