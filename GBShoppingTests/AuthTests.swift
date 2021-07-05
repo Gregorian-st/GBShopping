@@ -24,7 +24,7 @@ class AuthTests: XCTestCase {
         let auth = try XCTUnwrap(requestFactory).makeAuthRequestFatory()
         let signInExpectation = expectation(description: "Sign In Expectation")
         
-        auth.login(loginName: "Somebody", password: "mypassword") { response in
+        auth.login(loginName: "Somebody", password: "mypassword", cookie: "Param=Value") { response in
             switch response.result {
             case .success(let login):
                 XCTAssertEqual(login.user.id, 123)
@@ -41,7 +41,7 @@ class AuthTests: XCTestCase {
         let auth = try XCTUnwrap(requestFactory).makeAuthRequestFatory()
         let changeUserDataExpectation = expectation(description: "Change User Data Expectation")
         
-        auth.changeUserData(loginName: "Somebody", password: "mypassword", userName: "Nick", userLastName: "Cage") { response in
+        auth.changeUserData(userId: 123, loginName: "Greg", password: "GregPWD", email: "user@domain.com", gender: "m", creditCard: "1234-5678-9012-3456", bio: "Some biography") { response in
             switch response.result {
             case .success(let changeUserData):
                 XCTAssertEqual(changeUserData.result, 1)
@@ -58,7 +58,7 @@ class AuthTests: XCTestCase {
         let auth = try XCTUnwrap(requestFactory).makeAuthRequestFatory()
         let logoutExpectation = expectation(description: "Logout Expectation")
         
-        auth.logout() { response in
+        auth.logout(userId: 123) { response in
             switch response.result {
             case .success(let logout):
                 XCTAssertEqual(logout.result, 1)
@@ -75,11 +75,10 @@ class AuthTests: XCTestCase {
         let auth = try XCTUnwrap(requestFactory).makeAuthRequestFatory()
         let registerUserExpectation = expectation(description: "Register User Expectation")
         
-        auth.registerUser(loginName: "Greg", password: "GregPWD", userName: "Gregor", userLastName: "Joiner") { response in
+        auth.registerUser(loginName: "Greg", password: "GregPWD", email: "user@domain.com", gender: "m", creditCard: "1234-5678-9012-3456", bio: "Some biography") { response in
             switch response.result {
             case .success(let registerUser):
                 XCTAssertEqual(registerUser.result, 1)
-                XCTAssertEqual(registerUser.userMessage, "Регистрация прошла успешно!")
                 registerUserExpectation.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)

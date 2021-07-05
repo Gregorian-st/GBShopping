@@ -2,18 +2,16 @@
 //  ProductCatalogResult.swift
 //  GBShopping
 //
-//  Created by Grigory Stolyarov on 29.06.2021.
+//  Created by Grigory Stolyarov on 01.07.2021.
 //
 
 import Foundation
 
 struct ProductCatalogResult: Codable {
-    let id: Int
-    let name: String
-    let price: Float
+    let pageNumber: Int
+    let products: [ProductCatalog]
     enum CodingKeys: String, CodingKey {
-        case id = "id_product"
-        case name = "product_name"
-        case price = "price"
+        case pageNumber = "page_number"
+        case products = "products"
     }
 }
