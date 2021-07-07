@@ -36,7 +36,6 @@ extension Product: ProductRequestFactory {
 
 }
 
-
 extension Product {
     
     struct CatalogData: RequestRouter {

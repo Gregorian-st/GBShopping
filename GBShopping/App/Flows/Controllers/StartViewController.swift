@@ -29,6 +29,11 @@ class StartViewController: UIViewController {
         getProductReviews()
         addProductReview()
         removeProductReview()
+        
+        addToBasket()
+        deleteFromBasket()
+        getBasket()
+        payBasket()
     }
     
     // MARK: - Auth Methods
@@ -139,6 +144,56 @@ class StartViewController: UIViewController {
             switch response.result {
             case .success(let productReview):
                 print(productReview)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    // MARK: - Basket Methods
+    
+    private func addToBasket() {
+        let basket = requestFactory.makeBasketRequestFatory()
+        basket.addToBasket(productId: 123, quantity: 1) { response in
+            switch response.result {
+            case .success(let addToBasketResult):
+                print(addToBasketResult)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func deleteFromBasket() {
+        let basket = requestFactory.makeBasketRequestFatory()
+        basket.deleteFromBasket(productId: 123) { response in
+            switch response.result {
+            case .success(let addToBasketResult):
+                print(addToBasketResult)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func getBasket() {
+        let basket = requestFactory.makeBasketRequestFatory()
+        basket.getBasket(userId: 123) { response in
+            switch response.result {
+            case .success(let basket):
+                print(basket)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func payBasket() {
+        let basket = requestFactory.makeBasketRequestFatory()
+        basket.payBasket(userId: 123) { response in
+            switch response.result {
+            case .success(let payBasketResult):
+                print(payBasketResult)
             case .failure(let error):
                 print(error.localizedDescription)
             }
