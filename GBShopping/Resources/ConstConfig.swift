@@ -8,6 +8,9 @@
 import Foundation
 
 struct ConstConfig {
-//    static let baseURLString = "http://127.0.0.1:8080/"
-    static let baseURLString = "https://remembrance-zed-73259.herokuapp.com/"
+    #if DEBUG
+        static let baseURLString = "http://127.0.0.1:8080/"
+    #else
+        static let baseURLString = "https://remembrance-zed-73259.herokuapp.com/"
+    #endif
 }
