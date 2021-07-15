@@ -24,8 +24,14 @@ class Auth: AbstractRequestFactory {
 
 extension Auth: AuthRequestFactory {
     
-    func login(loginName: String, password: String, cookie: String, completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void) {
-        let requestModel = Login(baseUrl: baseUrl, loginName: loginName, password: password, cookie: cookie)
+    func login(loginName: String,
+               password: String,
+               cookie: String,
+               completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void) {
+        let requestModel = Login(baseUrl: baseUrl,
+                                 loginName: loginName,
+                                 password: password,
+                                 cookie: cookie)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
@@ -34,13 +40,46 @@ extension Auth: AuthRequestFactory {
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func registerUser(loginName: String, password: String, email: String, gender: String, creditCard: String, bio: String, completionHandler: @escaping (AFDataResponse<RegisterUserResult>) -> Void) {
-        let requestModel = RegisterUser(baseUrl: baseUrl, loginName: loginName, password: password, email: email, gender: gender, creditCard: creditCard, bio: bio)
+    func registerUser(loginName: String,
+                      password: String,
+                      name: String,
+                      surname: String,
+                      email: String,
+                      gender: String,
+                      creditCard: String,
+                      bio: String,
+                      completionHandler: @escaping (AFDataResponse<RegisterUserResult>) -> Void) {
+        let requestModel = RegisterUser(baseUrl: baseUrl,
+                                        loginName: loginName,
+                                        password: password,
+                                        name: name,
+                                        surname: surname,
+                                        email: email,
+                                        gender: gender,
+                                        creditCard: creditCard, bio: bio)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func changeUserData(userId: Int, loginName: String, password: String, email: String, gender: String, creditCard: String, bio: String,  completionHandler: @escaping (AFDataResponse<OnlyResult>) -> Void) {
-        let requestModel = ChangeUserData(baseUrl: baseUrl, userId: userId, loginName: loginName, password: password, email: email, gender: gender, creditCard: creditCard, bio: bio)
+    func changeUserData(userId: Int,
+                        loginName: String,
+                        password: String,
+                        name: String,
+                        surname: String,
+                        email: String,
+                        gender: String,
+                        creditCard: String,
+                        bio: String,
+                        completionHandler: @escaping (AFDataResponse<OnlyResult>) -> Void) {
+        let requestModel = ChangeUserData(baseUrl: baseUrl,
+                                          userId: userId,
+                                          loginName: loginName,
+                                          password: password,
+                                          name: name,
+                                          surname: surname,
+                                          email: email,
+                                          gender: gender,
+                                          creditCard: creditCard,
+                                          bio: bio)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
@@ -88,6 +127,8 @@ extension Auth {
         let userId: Int
         let loginName: String
         let password: String
+        let name: String
+        let surname: String
         let email: String
         let gender: String
         let creditCard: String
@@ -98,6 +139,8 @@ extension Auth {
                 "id_user": userId,
                 "username": loginName,
                 "password": password,
+                "name": name,
+                "surname": surname,
                 "email": email,
                 "gender": gender,
                 "credit_card": creditCard,
@@ -113,6 +156,8 @@ extension Auth {
         
         let loginName: String
         let password: String
+        let name: String
+        let surname: String
         let email: String
         let gender: String
         let creditCard: String
@@ -122,6 +167,8 @@ extension Auth {
             return [
                 "username": loginName,
                 "password": password,
+                "name": name,
+                "surname": surname,
                 "email": email,
                 "gender": gender,
                 "credit_card": creditCard,
