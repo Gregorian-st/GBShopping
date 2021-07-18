@@ -10,10 +10,14 @@ import Foundation
 struct ProductCatalog: Codable {
     let id: Int
     let name: String
+    let image: String
     let price: Float
+    let description: String
     enum CodingKeys: String, CodingKey {
         case id = "id_product"
-        case name = "product_name"
+        case name = "name"
+        case image = "image"
         case price = "price"
+        case description = "description"
     }
 }
