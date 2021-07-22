@@ -9,14 +9,14 @@ import UIKit
 
 class UserViewController: UIViewController {
     
-    private var passwordText: String = ""
-    private var repeatPasswordText: String = ""
-    private var nameText: String = ""
-    private var surnameText: String = ""
-    private var genderText: String = ""
-    private var emailText: String = ""
-    private var creditCardText: String = ""
-    private var bioText: String = ""
+    private var passwordText = String()
+    private var repeatPasswordText = String()
+    private var nameText = String()
+    private var surnameText = String()
+    private var genderText = String()
+    private var emailText = String()
+    private var creditCardText = String()
+    private var bioText = String()
     private let requestFactory = RequestFactory()
     private let userData = UserData.instance
     
@@ -252,7 +252,7 @@ class UserViewController: UIViewController {
     }
     
     private func updateCurrentUser() {
-        let newUser = User(
+        userData.user = User(
             id: userData.user.id,
             login: userData.user.login,
             name: nameText,
@@ -262,7 +262,6 @@ class UserViewController: UIViewController {
             creditCard: creditCardText,
             bio: bioText
         )
-        userData.user = newUser
     }
     
 }

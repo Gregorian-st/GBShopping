@@ -1,19 +1,16 @@
 //
-//  CatalogViewCell.swift
+//  ProductImageViewCell.swift
 //  GBShopping
 //
-//  Created by Grigory Stolyarov on 18.07.2021.
+//  Created by Grigory Stolyarov on 20.07.2021.
 //
 
 import UIKit
 
-class CatalogViewCell: UITableViewCell {
+class ProductImageViewCell: UITableViewCell {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var productNameLabel: UILabel!
-    @IBOutlet weak var productPriceLabel: UILabel!
-    @IBOutlet weak var productDescriptionLabel: UILabel!
     @IBOutlet weak var productImage: UIImageView! {
         didSet {
             productImage.layer.cornerRadius = 10

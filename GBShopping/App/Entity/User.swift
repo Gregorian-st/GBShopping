@@ -26,4 +26,26 @@ struct User: Codable {
         case creditCard = "credit_card"
         case bio = "bio"
     }
+    
+    init() {
+        id = 0
+        login = ""
+        name = ""
+        surname = ""
+        email = ""
+        gender = ""
+        creditCard = ""
+        bio = ""
+    }
+    
+    init(id: Int, login: String, name: String, surname: String, email: String, gender: String, creditCard: String, bio: String) {
+        self.id = id
+        self.login = login
+        self.name = name
+        self.surname = surname
+        self.email = email
+        self.gender = gender
+        self.creditCard = creditCard
+        self.bio = bio
+    }
 }

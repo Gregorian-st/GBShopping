@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="KGk-i7-Jjw" customClass="ProductDetailsViewCell" customModule="GBShopping" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJz-Wa-7sr" userLabel="ProductNameLabel">
+                        <rect key="frame" x="10" y="0.0" width="300" height="36"/>
+                        <string key="text">Product Name
+Product Name</string>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price: 1000₽" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaV-c6-3Nr" userLabel="ProductPriceLabel">
+                        <rect key="frame" x="10" y="128" width="300" height="17"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                        <color key="textColor" systemColor="systemGray2Color"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Product Description" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFb-We-66d" userLabel="ProductDetailsTextView">
+                        <rect key="frame" x="5" y="36" width="310" height="87"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="textColor" systemColor="labelColor"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="AJz-Wa-7sr" secondAttribute="trailing" constant="10" id="4JA-k5-gLG"/>
+                    <constraint firstItem="PaV-c6-3Nr" firstAttribute="top" secondItem="nFb-We-66d" secondAttribute="bottom" constant="5" id="8II-Rv-gK5"/>
+                    <constraint firstItem="AJz-Wa-7sr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="HSz-PV-0Zs"/>
+                    <constraint firstAttribute="bottom" secondItem="PaV-c6-3Nr" secondAttribute="bottom" constant="5" id="RS8-zu-OCB"/>
+                    <constraint firstItem="nFb-We-66d" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="Twh-PD-UDK"/>
+                    <constraint firstItem="nFb-We-66d" firstAttribute="top" secondItem="AJz-Wa-7sr" secondAttribute="bottom" id="ZAM-KM-VLB"/>
+                    <constraint firstAttribute="trailing" secondItem="nFb-We-66d" secondAttribute="trailing" constant="5" id="fBW-wV-Znv"/>
+                    <constraint firstItem="AJz-Wa-7sr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="o51-Dn-vR4"/>
+                    <constraint firstItem="PaV-c6-3Nr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ozx-Xl-6gg"/>
+                    <constraint firstAttribute="trailing" secondItem="PaV-c6-3Nr" secondAttribute="trailing" constant="10" id="wCl-q5-S78"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="productDescriptionText" destination="nFb-We-66d" id="pZU-ho-JJK"/>
+                <outlet property="productNameLabel" destination="AJz-Wa-7sr" id="6F7-Yc-59j"/>
+                <outlet property="productPriceLabel" destination="PaV-c6-3Nr" id="qso-D9-wvB"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="164.73214285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

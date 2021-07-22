@@ -9,15 +9,15 @@ import UIKit
 
 class RegisterViewController: UIViewController {
     
-    private var loginText: String = ""
-    private var passwordText: String = ""
-    private var repeatPasswordText: String = ""
-    private var nameText: String = ""
-    private var surnameText: String = ""
-    private var genderText: String = ""
-    private var emailText: String = ""
-    private var creditCardText: String = ""
-    private var bioText: String = ""
+    private var loginText = String()
+    private var passwordText = String()
+    private var repeatPasswordText = String()
+    private var nameText = String()
+    private var surnameText = String()
+    private var genderText = String()
+    private var emailText = String()
+    private var creditCardText = String()
+    private var bioText = String()
     private let requestFactory = RequestFactory()
     
     // MARK: - Outlets

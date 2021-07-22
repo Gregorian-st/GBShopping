@@ -11,6 +11,10 @@ class CartViewController: UIViewController {
     
     private let requestFactory = RequestFactory()
     
+    // MARK: - Outlets
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     // MARK: - Lifecycle
 
     override func viewDidLoad() {

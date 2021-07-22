@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSans-Bold.ttf">
+            <string>NotoSans-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ProductCartViewCell" customModule="GBShopping" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kp9-rQ-Sh6" userLabel="MinusButton">
+                        <rect key="frame" x="10" y="2" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="eFN-Fy-CVg"/>
+                            <constraint firstAttribute="height" constant="40" id="tER-BN-cCL"/>
+                        </constraints>
+                        <color key="tintColor" systemColor="systemGreenColor"/>
+                        <state key="normal">
+                            <imageReference key="image" image="minus.circle" catalog="system" symbolScale="large"/>
+                        </state>
+                        <connections>
+                            <action selector="minusButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="B2t-hE-Nel"/>
+                        </connections>
+                    </button>
+                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bsk-EN-k4l" userLabel="CountTextField">
+                        <rect key="frame" x="50" y="5" width="60" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="Edb-Bg-0hY"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyi-AO-oen" userLabel="PlusButton">
+                        <rect key="frame" x="110" y="2" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="DVE-Ev-eov"/>
+                            <constraint firstAttribute="height" constant="40" id="lfM-7r-kez"/>
+                        </constraints>
+                        <color key="tintColor" systemColor="systemGreenColor"/>
+                        <state key="normal">
+                            <imageReference key="image" image="plus.circle" catalog="system" symbolScale="large"/>
+                        </state>
+                        <connections>
+                            <action selector="plusButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="X3A-uA-K6B"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fg7-tt-KAY" userLabel="AddToCartButton">
+                        <rect key="frame" x="210" y="5" width="100" height="34"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="0R6-cI-Ixa"/>
+                            <constraint firstAttribute="height" constant="34" id="GT2-lc-wAJ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="NotoSans-Bold" family="Noto Sans" pointSize="15"/>
+                        <state key="normal" title="Add to Cart">
+                            <color key="titleColor" systemColor="systemBackgroundColor"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="fg7-tt-KAY" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0FG-mb-Who"/>
+                    <constraint firstItem="yyi-AO-oen" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8qo-2D-hdq"/>
+                    <constraint firstItem="kp9-rQ-Sh6" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="G4D-RS-bFE"/>
+                    <constraint firstItem="kp9-rQ-Sh6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Ijr-K4-goh"/>
+                    <constraint firstAttribute="trailing" secondItem="fg7-tt-KAY" secondAttribute="trailing" constant="10" id="KgK-yt-4xP"/>
+                    <constraint firstItem="Bsk-EN-k4l" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Pjn-CY-51R"/>
+                    <constraint firstItem="Bsk-EN-k4l" firstAttribute="leading" secondItem="kp9-rQ-Sh6" secondAttribute="trailing" id="Zb7-7l-T0W"/>
+                    <constraint firstItem="yyi-AO-oen" firstAttribute="leading" secondItem="Bsk-EN-k4l" secondAttribute="trailing" id="kOo-eS-UD5"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addToCartButton" destination="fg7-tt-KAY" id="kgZ-8P-6VH"/>
+                <outlet property="countTextField" destination="Bsk-EN-k4l" id="15r-4o-rs2"/>
+                <outlet property="minusButton" destination="kp9-rQ-Sh6" id="JWV-RO-gyw"/>
+                <outlet property="plusButton" destination="yyi-AO-oen" id="BCb-F1-FiG"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="130.58035714285714"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="minus.circle" catalog="system" width="128" height="121"/>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

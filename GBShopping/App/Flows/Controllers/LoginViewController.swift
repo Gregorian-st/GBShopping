@@ -18,7 +18,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField! {
         didSet {
             usernameTextField.layer.cornerRadius = usernameTextField.frame.size.height / 2
-            usernameTextField.layer.borderWidth = 0.2
+            usernameTextField.layer.borderWidth = 0.5
+            usernameTextField.layer.borderColor = UIColor.systemGray2.cgColor
             usernameTextField.layer.masksToBounds = true
             usernameTextField.tag = 1
             usernameTextField.delegate = self
@@ -27,7 +28,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField! {
         didSet {
             passwordTextField.layer.cornerRadius = passwordTextField.frame.size.height / 2
-            passwordTextField.layer.borderWidth = 0.2
+            passwordTextField.layer.borderWidth = 0.5
+            passwordTextField.layer.borderColor = UIColor.systemGray2.cgColor
             passwordTextField.layer.masksToBounds = true
             passwordTextField.tag = 2
             passwordTextField.delegate = self
@@ -54,7 +56,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dismissKeyboard()
-        initUserData()
+        userData.user = User()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -127,20 +129,6 @@ class LoginViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
-    }
-    
-    private func initUserData() {
-        let emptyUser = User(
-            id: 0,
-            login: "",
-            name: "",
-            surname: "",
-            email: "",
-            gender: "",
-            creditCard: "",
-            bio: ""
-        )
-        userData.user = emptyUser
     }
     
     private func goToRegister() {
