@@ -24,13 +24,13 @@ class Basket: AbstractRequestFactory {
 
 extension Basket: BasketRequestFactory {
     
-    func addToBasket(productId: Int, quantity: Int, completionHandler: @escaping (AFDataResponse<OnlyResult>) -> Void) {
-        let requestModel = AddToBasketData(baseUrl: baseUrl, productId: productId, quantity: quantity)
+    func addToBasket(userId: Int, productId: Int, quantity: Int, completionHandler: @escaping (AFDataResponse<OnlyResult>) -> Void) {
+        let requestModel = AddToBasketData(baseUrl: baseUrl, userId: userId, productId: productId, quantity: quantity)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func deleteFromBasket(productId: Int, completionHandler: @escaping (AFDataResponse<OnlyResult>) -> Void) {
-        let requestModel = DeleteFromBasketData(baseUrl: baseUrl, productId: productId)
+    func deleteFromBasket(userId: Int, productId: Int, completionHandler: @escaping (AFDataResponse<OnlyResult>) -> Void) {
+        let requestModel = DeleteFromBasketData(baseUrl: baseUrl, userId: userId, productId: productId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
@@ -53,11 +53,13 @@ extension Basket {
         let method: HTTPMethod = .post
         let path: String = "addToBasket"
         
+        let userId: Int
         let productId: Int
         let quantity: Int
         
         var parameters: Parameters? {
             return [
+                "id_user": userId,
                 "id_product": productId,
                 "quantity": quantity
             ]
@@ -69,10 +71,12 @@ extension Basket {
         let method: HTTPMethod = .post
         let path: String = "deleteFromBasket"
         
+        let userId: Int
         let productId: Int
         
         var parameters: Parameters? {
             return [
+                "id_user": userId,
                 "id_product": productId
             ]
         }

@@ -18,6 +18,7 @@ class ProductViewController: UIViewController {
     private let requestFactory = RequestFactory()
     private var productCount: Int = 1
     
+    private let userData = UserData.instance
     var product = ProductCatalog()
     var reviews: [ProductReview] = []
 
@@ -38,7 +39,13 @@ class ProductViewController: UIViewController {
         super.viewWillAppear(animated)
         
     }
-
+    
+    // MARK: - Segues
+    
+    @IBAction func unwindFromReview (_ segue: UIStoryboardSegue) {
+        getProductReviews(productId: product.id)
+    }
+    
     // MARK: - Review Methods
     
     private func getProductReviews(productId: Int) {
@@ -64,20 +71,6 @@ class ProductViewController: UIViewController {
         }
     }
     
-    private func addProductReview() {
-        let review = requestFactory.makeReviewRequestFatory()
-        review.addProductReview(userId: 123,
-                                productId: 101,
-                                commentText: "Very good laptop!") { response in
-            switch response.result {
-            case .success(let productReview):
-                logging(productReview)
-            case .failure(let error):
-                logging(error.localizedDescription)
-            }
-        }
-    }
-    
     private func removeProductReview() {
         let review = requestFactory.makeReviewRequestFatory()
         review.removeProductReview(userId: 123,
@@ -88,6 +81,23 @@ class ProductViewController: UIViewController {
                 logging(productReview)
             case .failure(let error):
                 logging(error.localizedDescription)
+            }
+        }
+    }
+    
+    // MARK: - Basket Methods
+    
+    private func addToBasket(userId: Int, productId: Int, quantity: Int) {
+        let basket = requestFactory.makeBasketRequestFatory()
+        basket.addToBasket(userId: userId, productId: productId, quantity: quantity) { response in
+            DispatchQueue.main.async {
+                switch response.result {
+                case .success(let addToBasketResult):
+                    logging(addToBasketResult)
+                case .failure(let error):
+                    logging(error.localizedDescription)
+                    showAlert(alertMessage: "Wrong server response!", viewController: self)
+                }
             }
         }
     }
@@ -109,6 +119,14 @@ class ProductViewController: UIViewController {
         tableView.register(UINib(nibName: "ReviewAddViewCell", bundle: nil), forCellReuseIdentifier: cellReviewAddReuseID)
         tableView.cellLayoutMarginsFollowReadableWidth = true
         tableView.separatorStyle = .none
+    }
+    
+    private func goToReview() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let reviewViewController = storyboard.instantiateViewController(identifier: "ReviewViewController")
+        reviewViewController.modalPresentationStyle = .popover
+        (reviewViewController as! ReviewViewController).productId = product.id
+        present(reviewViewController, animated: true, completion: nil)
     }
     
 }
@@ -193,6 +211,7 @@ extension ProductViewController: UITableViewDataSource, UITableViewDelegate {
             // Product Cart Cell
             let cell = tableView.dequeueReusableCell(withIdentifier: cellProductCartReuseID, for: indexPath) as! ProductCartViewCell
             cell.productCount = productCount
+            cell.delegate = self
             cell.selectionStyle = .none
             return cell
         default:
@@ -215,6 +234,7 @@ extension ProductViewController: UITableViewDataSource, UITableViewDelegate {
         } else if indexPath.row == reviews.count + 1 {
             // Review Add Cell
             let cell = tableView.dequeueReusableCell(withIdentifier: cellReviewAddReuseID, for: indexPath) as! ReviewAddViewCell
+            cell.delegate = self
             cell.selectionStyle = .none
             return cell
         } else {
@@ -226,4 +246,25 @@ extension ProductViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+}
+
+// MARK: - ProductCartViewCellDelegate
+
+extension ProductViewController: ProductCartViewCellDelegate {
+    
+    func addProductToCart(quantity: Int) {
+        addToBasket(userId: userData.user.id, productId: product.id, quantity: quantity)
+        performSegue(withIdentifier: "unwindFromProductInfo", sender: self)
+    }
+    
+}
+
+// MARK: - ReviewAddViewCellDelegate
+
+extension ProductViewController: ReviewAddViewCellDelegate {
+    
+    func addReview() {
+        goToReview()
+    }
+
 }

@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol ProductCartViewCellDelegate: AnyObject {
+    func addProductToCart(quantity: Int)
+}
+
 class ProductCartViewCell: UITableViewCell {
     
+    weak var delegate: ProductCartViewCellDelegate?
     var productCount: Int = 1 {
         didSet {
             if productCount < 1 {
@@ -47,6 +52,10 @@ class ProductCartViewCell: UITableViewCell {
     
     @IBAction func minusButtonTapped(_ sender: UIButton) {
         productCount -= 1
+    }
+    
+    @IBAction func addToCartButtonTapped(_ sender: UIButton) {
+        delegate?.addProductToCart(quantity: productCount)
     }
     
     // MARK: - Lifecycle

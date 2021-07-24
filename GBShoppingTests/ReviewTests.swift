@@ -24,7 +24,7 @@ class ReviewTests: XCTestCase {
         let review = try XCTUnwrap(requestFactory).makeReviewRequestFatory()
         let catalogDataExpectation = expectation(description: "Get Product Reviews Expectation")
         
-        review.getProductReviews(productId: 123) { response in
+        review.getProductReviews(productId: 101) { response in
             switch response.result {
             case .success(let productReviews):
                 XCTAssertEqual(productReviews.result, 1)
@@ -41,7 +41,7 @@ class ReviewTests: XCTestCase {
         let review = try XCTUnwrap(requestFactory).makeReviewRequestFatory()
         let catalogDataExpectation = expectation(description: "Add Product Review Expectation")
         
-        review.addProductReview(userId: 123, productId: 123, commentText: "Very good laptop!") { response in
+        review.addProductReview(userId: 123, productId: 101, commentText: "Very good laptop!") { response in
             switch response.result {
             case .success(let productReview):
                 XCTAssertEqual(productReview.result, 1)

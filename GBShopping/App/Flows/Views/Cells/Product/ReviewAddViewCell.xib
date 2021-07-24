@@ -33,6 +33,9 @@
                         <state key="normal" title="Add Review">
                             <color key="titleColor" systemColor="systemGreenColor"/>
                         </state>
+                        <connections>
+                            <action selector="addReviewButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8xn-4y-Mpi"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

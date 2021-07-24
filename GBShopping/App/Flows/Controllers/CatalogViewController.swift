@@ -38,6 +38,20 @@ class CatalogViewController: UIViewController {
         productCatalogData(categoryId: 1, pageNumber: 1)
     }
     
+    // MARK: - Segues
+    
+    @IBAction func unwindFromProductInfo (_ segue: UIStoryboardSegue) {
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let productViewController = segue.destination as? ProductViewController
+        else { return }
+        
+        productViewController.product = productSelected
+        productViewController.hidesBottomBarWhenPushed = true
+    }
+    
     // MARK: - Product Methods
     
     private func productCatalogData(categoryId: Int, pageNumber: Int) {
@@ -123,14 +137,6 @@ extension CatalogViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         productGetGoodById(productId: goods[indexPath.row].id)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let productViewController = segue.destination as? ProductViewController
-        else { return }
-        
-        productViewController.product = productSelected
-        productViewController.hidesBottomBarWhenPushed = true
     }
     
 }
