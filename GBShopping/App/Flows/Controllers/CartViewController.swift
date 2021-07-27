@@ -44,6 +44,7 @@ class CartViewController: UIViewController {
                 case .success(let deleteFromBasketResult):
                     logging(deleteFromBasketResult)
                     if deleteFromBasketResult.result == 1 {
+                        logAnalytics(messageType: .productDeleteFromCart, messageText: "Product id=\(productId) removed from cart")
                         self.getBasket(userId: userId)
                     }
                 case .failure(let error):
@@ -79,6 +80,7 @@ class CartViewController: UIViewController {
                 case .success(let payBasketResult):
                     logging(payBasketResult)
                     if payBasketResult.result == 1 {
+                        logAnalytics(messageType: .cartPay, messageText: "Payment successful")
                         showAlert(alertMessage: "Thank you for payment!", viewController: self)
                         self.getBasket(userId: userId)
                     }

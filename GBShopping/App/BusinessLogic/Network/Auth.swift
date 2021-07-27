@@ -12,7 +12,7 @@ class Auth: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
-    let baseUrl = URL(string: ConstConfig.baseURLString)!
+    let baseUrl = ConstConfig.baseURLString
     
     init( errorParser: AbstractErrorParser, sessionManager: Session, queue: DispatchQueue = DispatchQueue.global(qos: .utility)) {
         self.errorParser = errorParser
@@ -88,7 +88,7 @@ extension Auth: AuthRequestFactory {
 extension Auth {
     
     struct Login: RequestRouter {
-        let baseUrl: URL
+        let baseUrl: String
         let method: HTTPMethod = .post
         let path: String = "login"
         
@@ -106,7 +106,7 @@ extension Auth {
     }
     
     struct Logout: RequestRouter {
-        let baseUrl: URL
+        let baseUrl: String
         let method: HTTPMethod = .post
         let path: String = "logout"
         
@@ -120,7 +120,7 @@ extension Auth {
     }
     
     struct ChangeUserData: RequestRouter {
-        let baseUrl: URL
+        let baseUrl: String
         let method: HTTPMethod = .post
         let path: String = "changeUserData"
         
@@ -150,7 +150,7 @@ extension Auth {
     }
     
     struct RegisterUser: RequestRouter {
-        let baseUrl: URL
+        let baseUrl: String
         let method: HTTPMethod = .post
         let path: String = "register"
         

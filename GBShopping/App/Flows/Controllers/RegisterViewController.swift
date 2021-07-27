@@ -132,6 +132,7 @@ class RegisterViewController: UIViewController {
                 case .success(let registerUser):
                     logging(registerUser)
                     if registerUser.result == 1 {
+                        logAnalytics(messageType: .registration, messageText: "User registered successfully")
                         self.performSegue(withIdentifier: "unwindFromRegister", sender: self)
                     } else {
                         showAlert(alertMessage: registerUser.errorMessage, viewController: self)

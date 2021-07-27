@@ -61,6 +61,7 @@ class CatalogViewController: UIViewController {
                 switch response.result {
                 case .success(let products):
                     logging(products)
+                    logAnalytics(messageType: .catalogShow, messageText: "Show catalog page")
                     if products.products.count == 0 {
                         showAlert(alertMessage: "Empty catalog!", viewController: self)
                     }
@@ -82,6 +83,7 @@ class CatalogViewController: UIViewController {
                 case .success(let product):
                     logging(product)
                     if product.result == 1 {
+                        logAnalytics(messageType: .productShow, messageText: "Show product id=\(product.product.id)")
                         self.productSelected = product.product
                         self.performSegue(withIdentifier: "showProductInfo", sender: nil)
                     } else {

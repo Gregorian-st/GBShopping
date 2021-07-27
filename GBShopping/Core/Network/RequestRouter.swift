@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import Firebase
 
 enum RequestRouterEncoding {
     case url, json
@@ -13,7 +14,7 @@ enum RequestRouterEncoding {
 
 protocol RequestRouter: URLRequestConvertible {
 
-    var baseUrl: URL { get }
+    var baseUrl: String { get }
     var method: HTTPMethod { get }
     var path: String { get }
     var parameters: Parameters? { get }
@@ -25,7 +26,13 @@ protocol RequestRouter: URLRequestConvertible {
 extension RequestRouter {
 
     var fullUrl: URL {
-        return baseUrl.appendingPathComponent(path)
+        guard let url = URL(string: baseUrl)
+        else {
+            Crashlytics.crashlytics().log("baseURL Error!")
+            fatalError("baseURL Error!")
+        }
+
+        return url.appendingPathComponent(path)
     }
 
     var encoding: RequestRouterEncoding {

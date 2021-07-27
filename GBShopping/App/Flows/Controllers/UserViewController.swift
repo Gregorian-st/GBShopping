@@ -160,6 +160,7 @@ class UserViewController: UIViewController {
                 case .success(let logout):
                     logging(logout)
                     if logout.result == 1 {
+                        logAnalytics(messageType: .logout, messageText: "User logout")
                         self.performSegue(withIdentifier: "unwindFromUserInfo", sender: self)
                     } else {
                         showAlert(alertMessage: "Wrong request!", viewController: self)
