@@ -38,7 +38,7 @@ class GBShoppingUITests: XCTestCase {
 
         elementsQuery/*@START_MENU_TOKEN@*/.staticTexts["Login"]/*[[".buttons[\"Login\"].staticTexts[\"Login\"]",".staticTexts[\"Login\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
               
-        XCTAssertTrue(app.otherElements["catalogViewController"].waitForExistence(timeout: 5), app.debugDescription)
+        XCTAssertTrue(app.otherElements["catalogViewController"].waitForExistence(timeout: 10), app.debugDescription)
     }
 
 }
