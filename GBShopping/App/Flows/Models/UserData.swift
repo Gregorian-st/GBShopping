@@ -11,14 +11,5 @@ class UserData {
     static let instance = UserData()
     private init() {}
     
-    var user = User(
-        id: 0,
-        login: "",
-        name: "",
-        surname: "",
-        email: "",
-        gender: "",
-        creditCard: "",
-        bio: ""
-    )
+    var user = User()
 }

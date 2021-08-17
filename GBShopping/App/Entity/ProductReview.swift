@@ -16,4 +16,16 @@ struct ProductReview: Codable {
         case userId = "id_user"
         case commentText = "commentText"
     }
+    
+    init() {
+        commentId = 0
+        userId = 0
+        commentText = ""
+    }
+    
+    init(commentId: Int, userId: Int, commentText: String) {
+        self.commentId = commentId
+        self.userId = userId
+        self.commentText = commentText
+    }
 }

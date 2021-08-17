@@ -10,9 +10,11 @@ import UIKit
 class CatalogViewController: UIViewController {
     
     private let cellHeight: CGFloat = 84
+    private let cellCatalogReuseID = "catalogCell"
     
     private let requestFactory = RequestFactory()
     private var goods: [ProductCatalog] = []
+    private var productSelected = ProductCatalog()
     
     // MARK: - Outlets
     
@@ -23,12 +25,12 @@ class CatalogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNavigationBar()
         setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupNavigationBar()
         
         navigationController?.hidesBarsOnSwipe = false
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -45,6 +47,9 @@ class CatalogViewController: UIViewController {
                 switch response.result {
                 case .success(let products):
                     logging(products)
+                    if products.products.count == 0 {
+                        showAlert(alertMessage: "Empty catalog!", viewController: self)
+                    }
                     self.goods = products.products
                     self.tableView.reloadData()
                 case .failure(let error):
@@ -55,60 +60,27 @@ class CatalogViewController: UIViewController {
         }
     }
     
-    private func productGetGoodById() {
+    private func productGetGoodById(productId: Int) {
         let product = requestFactory.makeProductRequestFatory()
-        product.getGoodById(productId: 101) { response in
-            switch response.result {
-            case .success(let product):
-                logging(product)
-            case .failure(let error):
-                logging(error.localizedDescription)
+        product.getGoodById(productId: productId) { response in
+            DispatchQueue.main.async {
+                switch response.result {
+                case .success(let product):
+                    logging(product)
+                    if product.result == 1 {
+                        self.productSelected = product.product
+                        self.performSegue(withIdentifier: "showProductInfo", sender: nil)
+                    } else {
+                        showAlert(alertMessage: "Wrong product ID!", viewController: self)
+                    }
+                case .failure(let error):
+                    logging(error.localizedDescription)
+                    showAlert(alertMessage: "Wrong server response!", viewController: self)
+                }
             }
         }
     }
-    
-    // MARK: - Review Methods
-    
-    private func getProductReviews() {
-        let review = requestFactory.makeReviewRequestFatory()
-        review.getProductReviews(productId: 101) { response in
-            switch response.result {
-            case .success(let productReviews):
-                logging(productReviews)
-            case .failure(let error):
-                logging(error.localizedDescription)
-            }
-        }
-    }
-    
-    private func addProductReview() {
-        let review = requestFactory.makeReviewRequestFatory()
-        review.addProductReview(userId: 123,
-                                productId: 101,
-                                commentText: "Very good laptop!") { response in
-            switch response.result {
-            case .success(let productReview):
-                logging(productReview)
-            case .failure(let error):
-                logging(error.localizedDescription)
-            }
-        }
-    }
-    
-    private func removeProductReview() {
-        let review = requestFactory.makeReviewRequestFatory()
-        review.removeProductReview(userId: 123,
-                                   productId: 123,
-                                   commentId: 1) { response in
-            switch response.result {
-            case .success(let productReview):
-                logging(productReview)
-            case .failure(let error):
-                logging(error.localizedDescription)
-            }
-        }
-    }
-    
+        
     // MARK: - App Logic
     
     func setupNavigationBar() {
@@ -118,12 +90,14 @@ class CatalogViewController: UIViewController {
     }
     
     func setupTableView() {
-        tableView.register(UINib(nibName: "CatalogViewCell", bundle: nil), forCellReuseIdentifier: "catalogCell")
+        tableView.register(UINib(nibName: "CatalogViewCell", bundle: nil), forCellReuseIdentifier: cellCatalogReuseID)
         tableView.cellLayoutMarginsFollowReadableWidth = true
         tableView.separatorStyle = .none
     }
     
 }
+
+// MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension CatalogViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -132,7 +106,7 @@ extension CatalogViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "catalogCell", for: indexPath) as! CatalogViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellCatalogReuseID, for: indexPath) as! CatalogViewCell
         cell.productNameLabel.text = "\(goods[indexPath.row].name)"
         cell.productPriceLabel.text = "Price: \(String(format: "%0.2f", goods[indexPath.row].price)) ₽"
         cell.productDescriptionLabel.text = "\(goods[indexPath.row].description)"
@@ -145,6 +119,18 @@ extension CatalogViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        productGetGoodById(productId: goods[indexPath.row].id)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let productViewController = segue.destination as? ProductViewController
+        else { return }
+        
+        productViewController.product = productSelected
+        productViewController.hidesBottomBarWhenPushed = true
     }
     
 }

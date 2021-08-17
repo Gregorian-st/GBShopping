@@ -20,4 +20,12 @@ struct ProductCatalog: Codable {
         case price = "price"
         case description = "description"
     }
+    
+    init() {
+        id = 0
+        name = ""
+        image = ""
+        price = 0
+        description = ""
+    }
 }
