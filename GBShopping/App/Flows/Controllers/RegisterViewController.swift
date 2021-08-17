@@ -110,16 +110,23 @@ class RegisterViewController: UIViewController {
     
     // MARK: - Auth Methods
     
-    private func authRegisterUser() {
+    private func authRegisterUser(loginName: String,
+                                  password: String,
+                                  name: String,
+                                  surname: String,
+                                  email: String,
+                                  gender: String,
+                                  creditCard: String,
+                                  bio: String) {
         let auth = requestFactory.makeAuthRequestFatory()
-        auth.registerUser(loginName: loginText,
-                          password: passwordText,
-                          name: nameText,
-                          surname: surnameText,
-                          email: emailText,
-                          gender: genderText,
-                          creditCard: creditCardText,
-                          bio: bioText) { response in
+        auth.registerUser(loginName: loginName,
+                          password: password,
+                          name: name,
+                          surname: surname,
+                          email: email,
+                          gender: gender,
+                          creditCard: creditCard,
+                          bio: bio) { response in
             DispatchQueue.main.async {
                 switch response.result {
                 case .success(let registerUser):
@@ -156,7 +163,14 @@ class RegisterViewController: UIViewController {
     
     private func register() {
         if validateRegistrationInfo() {
-            authRegisterUser()
+            authRegisterUser(loginName: loginText,
+                             password: passwordText,
+                             name: nameText,
+                             surname: surnameText,
+                             email: emailText,
+                             gender: genderText,
+                             creditCard: creditCardText,
+                             bio: bioText)
         }
     }
     

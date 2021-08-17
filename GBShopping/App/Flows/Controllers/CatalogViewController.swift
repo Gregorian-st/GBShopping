@@ -9,43 +9,55 @@ import UIKit
 
 class CatalogViewController: UIViewController {
     
+    private let cellHeight: CGFloat = 84
+    
     private let requestFactory = RequestFactory()
+    private var goods: [ProductCatalog] = []
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        productCatalogData()
-        productGetGoodById()
+        setupNavigationBar()
+        setupTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        getProductReviews()
-        addProductReview()
-        removeProductReview()
+        navigationController?.hidesBarsOnSwipe = false
+        navigationController?.navigationBar.prefersLargeTitles = true
         
-        addToBasket()
-        deleteFromBasket()
-        getBasket()
-        payBasket()
+        productCatalogData(categoryId: 1, pageNumber: 1)
     }
     
     // MARK: - Product Methods
     
-    private func productCatalogData() {
+    private func productCatalogData(categoryId: Int, pageNumber: Int) {
         let product = requestFactory.makeProductRequestFatory()
-        product.catalogData(categoryId: 2, pageNumber: 1) { response in
-            switch response.result {
-            case .success(let products):
-                logging(products)
-            case .failure(let error):
-                logging(error.localizedDescription)
+        product.catalogData(categoryId: categoryId, pageNumber: pageNumber) { response in
+            DispatchQueue.main.async {
+                switch response.result {
+                case .success(let products):
+                    logging(products)
+                    self.goods = products.products
+                    self.tableView.reloadData()
+                case .failure(let error):
+                    logging(error.localizedDescription)
+                    showAlert(alertMessage: "Wrong server response!", viewController: self)
+                }
             }
         }
     }
     
     private func productGetGoodById() {
         let product = requestFactory.makeProductRequestFatory()
-        product.getGoodById(productId: 123) { response in
+        product.getGoodById(productId: 101) { response in
             switch response.result {
             case .success(let product):
                 logging(product)
@@ -59,7 +71,7 @@ class CatalogViewController: UIViewController {
     
     private func getProductReviews() {
         let review = requestFactory.makeReviewRequestFatory()
-        review.getProductReviews(productId: 123) { response in
+        review.getProductReviews(productId: 101) { response in
             switch response.result {
             case .success(let productReviews):
                 logging(productReviews)
@@ -72,7 +84,7 @@ class CatalogViewController: UIViewController {
     private func addProductReview() {
         let review = requestFactory.makeReviewRequestFatory()
         review.addProductReview(userId: 123,
-                                productId: 123,
+                                productId: 101,
                                 commentText: "Very good laptop!") { response in
             switch response.result {
             case .success(let productReview):
@@ -97,56 +109,42 @@ class CatalogViewController: UIViewController {
         }
     }
     
-    // MARK: - Basket Methods
+    // MARK: - App Logic
     
-    private func addToBasket() {
-        let basket = requestFactory.makeBasketRequestFatory()
-        basket.addToBasket(productId: 123, quantity: 1) { response in
-            switch response.result {
-            case .success(let addToBasketResult):
-                logging(addToBasketResult)
-            case .failure(let error):
-                logging(error.localizedDescription)
-            }
-        }
+    func setupNavigationBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.hidesBarsOnSwipe = false
+        navigationItem.backButtonTitle = ""
     }
     
-    private func deleteFromBasket() {
-        let basket = requestFactory.makeBasketRequestFatory()
-        basket.deleteFromBasket(productId: 123) { response in
-            switch response.result {
-            case .success(let addToBasketResult):
-                logging(addToBasketResult)
-            case .failure(let error):
-                logging(error.localizedDescription)
-            }
-        }
+    func setupTableView() {
+        tableView.register(UINib(nibName: "CatalogViewCell", bundle: nil), forCellReuseIdentifier: "catalogCell")
+        tableView.cellLayoutMarginsFollowReadableWidth = true
+        tableView.separatorStyle = .none
     }
     
-    private func getBasket() {
-        let basket = requestFactory.makeBasketRequestFatory()
-        basket.getBasket(userId: 123) { response in
-            switch response.result {
-            case .success(let basket):
-                logging(basket)
-            case .failure(let error):
-                logging(error.localizedDescription)
-            }
-        }
-    }
-    
-    private func payBasket() {
-        let basket = requestFactory.makeBasketRequestFatory()
-        basket.payBasket(userId: 123) { response in
-            switch response.result {
-            case .success(let payBasketResult):
-                logging(payBasketResult)
-            case .failure(let error):
-                logging(error.localizedDescription)
-            }
-        }
-    }
-    
+}
 
+extension CatalogViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        goods.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "catalogCell", for: indexPath) as! CatalogViewCell
+        cell.productNameLabel.text = "\(goods[indexPath.row].name)"
+        cell.productPriceLabel.text = "Price: \(String(format: "%0.2f", goods[indexPath.row].price)) ₽"
+        cell.productDescriptionLabel.text = "\(goods[indexPath.row].description)"
+        if let imageURL = URL.init(string: goods[indexPath.row].image) {
+            cell.productImage.load(url: imageURL)
+        }
+        cell.selectionStyle = .none
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeight
+    }
     
 }

@@ -26,7 +26,7 @@ class ProductTests: XCTestCase {
         let product = try XCTUnwrap(requestFactory).makeProductRequestFatory()
         let catalogDataExpectation = expectation(description: "Catalog Data Expectation")
         
-        product.catalogData(categoryId: 2, pageNumber: 1) { response in
+        product.catalogData(categoryId: 1, pageNumber: 1) { response in
             switch response.result {
             case .success(let catalog):
                 XCTAssertGreaterThan(catalog.products.count, 0)
@@ -43,7 +43,7 @@ class ProductTests: XCTestCase {
         let product = try XCTUnwrap(requestFactory).makeProductRequestFatory()
         let getGoodByIdExpectation = expectation(description: "Get Good By ID Expectation")
         
-        product.getGoodById(productId: 123) { response in
+        product.getGoodById(productId: 101) { response in
             switch response.result {
             case .success(let product):
                 XCTAssertEqual(product.result, 1)

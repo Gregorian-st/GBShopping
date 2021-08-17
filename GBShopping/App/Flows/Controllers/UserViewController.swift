@@ -80,7 +80,7 @@ class UserViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func logoutButtonTapped(_ sender: UIButton) {
-        authLogout()
+        authLogout(userId: userData.user.id)
     }
     
     @IBAction func updateButtonTapped(_ sender: UIButton) {
@@ -114,17 +114,25 @@ class UserViewController: UIViewController {
     
     // MARK: - Auth Methods
     
-    private func authChangeUserData() {
+    private func authChangeUserData(userId: Int,
+                                    loginName: String,
+                                    password: String,
+                                    name: String,
+                                    surname: String,
+                                    email: String,
+                                    gender: String,
+                                    creditCard: String,
+                                    bio: String) {
         let auth = requestFactory.makeAuthRequestFatory()
-        auth.changeUserData(userId: userData.user.id,
-                            loginName: UserData.instance.user.login,
-                            password: passwordText,
-                            name: nameText,
-                            surname: surnameText,
-                            email: emailText,
-                            gender: genderText,
-                            creditCard: creditCardText,
-                            bio: bioText) { response in
+        auth.changeUserData(userId: userId,
+                            loginName: loginName,
+                            password: password,
+                            name: name,
+                            surname: surname,
+                            email: email,
+                            gender: gender,
+                            creditCard: creditCard,
+                            bio: bio) { response in
             DispatchQueue.main.async {
                 switch response.result {
                 case .success(let changeUserData):
@@ -144,9 +152,9 @@ class UserViewController: UIViewController {
         }
     }
     
-    private func authLogout() {
+    private func authLogout(userId: Int) {
         let auth = requestFactory.makeAuthRequestFatory()
-        auth.logout(userId: userData.user.id) { response in
+        auth.logout(userId: userId) { response in
             DispatchQueue.main.async {
                 switch response.result {
                 case .success(let logout):
@@ -203,7 +211,15 @@ class UserViewController: UIViewController {
     
     private func changeUserData() {
         if validateUserInfo() {
-            authChangeUserData()
+            authChangeUserData(userId: userData.user.id,
+                               loginName: UserData.instance.user.login,
+                               password: passwordText,
+                               name: nameText,
+                               surname: surnameText,
+                               email: emailText,
+                               gender: genderText,
+                               creditCard: creditCardText,
+                               bio: bioText)
         }
     }
     
