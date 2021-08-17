@@ -29,13 +29,25 @@ extension Review: ReviewRequestFactory {
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func addProductReview(userId: Int, productId: Int, commentText: String, completionHandler: @escaping (AFDataResponse<AddProductReviewResult>) -> Void) {
-        let requestModel = AddProductReview(baseUrl: baseUrl, userId: userId, productId: productId, commentText: commentText)
+    func addProductReview(userId: Int,
+                          productId: Int,
+                          commentText: String,
+                          completionHandler: @escaping (AFDataResponse<AddProductReviewResult>) -> Void) {
+        let requestModel = AddProductReview(baseUrl: baseUrl,
+                                            userId: userId,
+                                            productId: productId,
+                                            commentText: commentText)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func removeProductReview(userId: Int, productId: Int, commentId: Int, completionHandler: @escaping (AFDataResponse<OnlyResult>) -> Void) {
-        let requestModel = RemoveProductReview(baseUrl: baseUrl, userId: userId, productId: productId, commentId: commentId)
+    func removeProductReview(userId: Int,
+                             productId: Int,
+                             commentId: Int,
+                             completionHandler: @escaping (AFDataResponse<OnlyResult>) -> Void) {
+        let requestModel = RemoveProductReview(baseUrl: baseUrl,
+                                               userId: userId,
+                                               productId: productId,
+                                               commentId: commentId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 
