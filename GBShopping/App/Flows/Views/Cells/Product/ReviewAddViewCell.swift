@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol ReviewAddViewCellDelegate: AnyObject {
+    func addReview()
+}
+
 class ReviewAddViewCell: UITableViewCell {
+    
+    weak var delegate: ReviewAddViewCellDelegate?
     
     // MARK: - Outlets
     
@@ -18,6 +24,12 @@ class ReviewAddViewCell: UITableViewCell {
             addReviewButton.layer.borderColor = UIColor.systemGreen.cgColor
             addReviewButton.layer.masksToBounds = true
         }
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func addReviewButtonTapped(_ sender: UIButton) {
+        delegate?.addReview()
     }
     
     // MARK: - Lifecycle

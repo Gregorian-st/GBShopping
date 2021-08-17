@@ -70,6 +70,9 @@
                         <state key="normal" title="Add to Cart">
                             <color key="titleColor" systemColor="systemBackgroundColor"/>
                         </state>
+                        <connections>
+                            <action selector="addToCartButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ITd-iJ-2vq"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

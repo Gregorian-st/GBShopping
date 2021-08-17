@@ -134,7 +134,7 @@ class RegisterViewController: UIViewController {
                     if registerUser.result == 1 {
                         self.performSegue(withIdentifier: "unwindFromRegister", sender: self)
                     } else {
-                        showAlert(alertMessage: "Wrong field content!", viewController: self)
+                        showAlert(alertMessage: registerUser.errorMessage, viewController: self)
                     }
                 case .failure(let error):
                     logging(error.localizedDescription)

@@ -19,6 +19,23 @@ class AuthTests: XCTestCase {
     override func tearDownWithError() throws {
         requestFactory = nil
     }
+    
+    func testLogout() throws {
+        let auth = try XCTUnwrap(requestFactory).makeAuthRequestFatory()
+        let logoutExpectation = expectation(description: "Logout Expectation")
+        
+        auth.logout(userId: 123) { response in
+            switch response.result {
+            case .success(let logout):
+                XCTAssertEqual(logout.result, 1)
+                logoutExpectation.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        
+        waitForExpectations(timeout: 10, handler: nil)
+    }
 
     func testLogin() throws {
         let auth = try XCTUnwrap(requestFactory).makeAuthRequestFatory()
@@ -63,23 +80,6 @@ class AuthTests: XCTestCase {
         
         waitForExpectations(timeout: 10, handler: nil)
     }
-
-    func testLogout() throws {
-        let auth = try XCTUnwrap(requestFactory).makeAuthRequestFatory()
-        let logoutExpectation = expectation(description: "Logout Expectation")
-        
-        auth.logout(userId: 123) { response in
-            switch response.result {
-            case .success(let logout):
-                XCTAssertEqual(logout.result, 1)
-                logoutExpectation.fulfill()
-            case .failure(let error):
-                XCTFail(error.localizedDescription)
-            }
-        }
-        
-        waitForExpectations(timeout: 10, handler: nil)
-    }
     
     func testRegisterUser() throws {
         let auth = try XCTUnwrap(requestFactory).makeAuthRequestFatory()
@@ -95,7 +95,7 @@ class AuthTests: XCTestCase {
                           bio: "Some biography") { response in
             switch response.result {
             case .success(let registerUser):
-                XCTAssertEqual(registerUser.result, 1)
+                XCTAssertEqual(registerUser.result, 0)
                 registerUserExpectation.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)

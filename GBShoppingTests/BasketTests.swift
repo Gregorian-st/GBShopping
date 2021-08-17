@@ -24,10 +24,10 @@ class BasketTests: XCTestCase {
         let basket = try XCTUnwrap(requestFactory).makeBasketRequestFatory()
         let addToBasketExpectation = expectation(description: "Add To Basket Expectation")
         
-        basket.addToBasket(productId: 123, quantity: 1) { response in
+        basket.addToBasket(userId: 100, productId: 101, quantity: 1) { response in
             switch response.result {
             case .success(let addToBasketResult):
-                XCTAssertEqual(addToBasketResult.result, 1)
+                XCTAssertEqual(addToBasketResult.result, 0)
                 addToBasketExpectation.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)
@@ -41,10 +41,10 @@ class BasketTests: XCTestCase {
         let basket = try XCTUnwrap(requestFactory).makeBasketRequestFatory()
         let deleteFromBasketExpectation = expectation(description: "Delete From Basket Expectation")
         
-        basket.deleteFromBasket(productId: 123) { response in
+        basket.deleteFromBasket(userId: 100, productId: 100) { response in
             switch response.result {
             case .success(let deleteFromBasketResult):
-                XCTAssertEqual(deleteFromBasketResult.result, 1)
+                XCTAssertEqual(deleteFromBasketResult.result, 0)
                 deleteFromBasketExpectation.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)
@@ -78,7 +78,7 @@ class BasketTests: XCTestCase {
         basket.payBasket(userId: 123) { response in
             switch response.result {
             case .success(let payBasketResult):
-                XCTAssertEqual(payBasketResult.result, 1)
+                XCTAssertEqual(payBasketResult.result, 0)
                 payBasketExpectation.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)
