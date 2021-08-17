@@ -12,7 +12,7 @@ class Product: AbstractRequestFactory {
     var errorParser: AbstractErrorParser
     var sessionManager: Session
     var queue: DispatchQueue
-    let baseUrl = URL(string: ConstConfig.baseURLString)!
+    let baseUrl = ConstConfig.baseURLString
     
     init(errorParser: AbstractErrorParser, sessionManager: Session, queue: DispatchQueue = DispatchQueue.global(qos: .utility)) {
         self.errorParser = errorParser
@@ -39,7 +39,7 @@ extension Product: ProductRequestFactory {
 extension Product {
     
     struct CatalogData: RequestRouter {
-        let baseUrl: URL
+        let baseUrl: String
         let method: HTTPMethod = .post
         let path: String = "catalogData"
         
@@ -55,7 +55,7 @@ extension Product {
     }
     
     struct GetGoodById: RequestRouter {
-        let baseUrl: URL
+        let baseUrl: String
         let method: HTTPMethod = .post
         let path: String = "getGoodById"
         

@@ -72,6 +72,7 @@ class ReviewViewController: UIViewController {
                 case .success(let productReview):
                     logging(productReview)
                     if productReview.result == 1 {
+                        logAnalytics(messageType: .reviewAdd, messageText: "New review has been added for the product id=\(productId)")
                         self.performSegue(withIdentifier: "unwindFromReview", sender: self)
                     }
                 case .failure(let error):

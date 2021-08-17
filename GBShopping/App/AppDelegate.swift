@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #if DEBUG
             print(getDocumentsDirectory())
         #endif
-        
+        FirebaseApp.configure()
         return true
     }
 

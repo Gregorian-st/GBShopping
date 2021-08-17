@@ -96,6 +96,7 @@ class LoginViewController: UIViewController {
                 case .success(let login):
                     logging(login)
                     if login.result == 1 {
+                        logAnalytics(messageType: .loginSuccessful, messageText: "User logged successfully")
                         self.userData.user = login.user
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
@@ -103,6 +104,7 @@ class LoginViewController: UIViewController {
                         mainTabBarController.modalTransitionStyle = .flipHorizontal
                         self.present(mainTabBarController, animated: true, completion: nil)
                     } else {
+                        logAnalytics(messageType: .loginUnsuccessful, messageText: "Wrong user credentials")
                         showAlert(alertMessage: "Wrong credentials!", viewController: self)
                     }
                 case .failure(let error):

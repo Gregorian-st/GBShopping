@@ -77,6 +77,10 @@
 		F4E9984326AB2FD20086D987 /* CartPayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4E9984126AB2FD20086D987 /* CartPayViewCell.xib */; };
 		F4E9984526AC48E70086D987 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9984426AC48E70086D987 /* ReviewViewController.swift */; };
 		F4F745F4268E422C00497882 /* ProductCatalogResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F745F3268E422C00497882 /* ProductCatalogResult.swift */; };
+		F4F80D0D26B00AFC009544B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4F80D0C26B00AFC009544B0 /* GoogleService-Info.plist */; };
+		F4F80D0E26B00B54009544B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4F80D0C26B00AFC009544B0 /* GoogleService-Info.plist */; };
+		F4F80D0F26B00B54009544B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4F80D0C26B00AFC009544B0 /* GoogleService-Info.plist */; };
+		F4F80D1226B04983009544B0 /* AnalyticsLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F80D1126B04983009544B0 /* AnalyticsLogging.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +186,8 @@
 		F4E9984126AB2FD20086D987 /* CartPayViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartPayViewCell.xib; sourceTree = "<group>"; };
 		F4E9984426AC48E70086D987 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		F4F745F3268E422C00497882 /* ProductCatalogResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCatalogResult.swift; sourceTree = "<group>"; };
+		F4F80D0C26B00AFC009544B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F4F80D1126B04983009544B0 /* AnalyticsLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsLogging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +267,7 @@
 		F44A9A07267F47A400441CCF /* GBShopping */ = {
 			isa = PBXGroup;
 			children = (
+				F4F80D0C26B00AFC009544B0 /* GoogleService-Info.plist */,
 				F44A9A38267F5C5F00441CCF /* App */,
 				F44A9A3D267F5C9100441CCF /* Core */,
 				F44A9A3F267F5CA700441CCF /* Environments */,
@@ -354,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				F496E53926A04F43007AA9AB /* Alerting.swift */,
+				F4F80D1126B04983009544B0 /* AnalyticsLogging.swift */,
 				F496E537269F5222007AA9AB /* Logging.swift */,
 				F4DD9BCB268479DD00126EE1 /* Network */,
 			);
@@ -515,6 +523,7 @@
 				F44A9A02267F47A400441CCF /* Frameworks */,
 				F44A9A03267F47A400441CCF /* Resources */,
 				9D1900B20F70ADBB1078CBE6 /* [CP] Embed Pods Frameworks */,
+				F4F80D1026B02CFE009544B0 /* Firebase */,
 			);
 			buildRules = (
 			);
@@ -616,6 +625,7 @@
 				F49D3E6626A45B1A00AE8654 /* CatalogViewCell.xib in Resources */,
 				F46185B626A8B0E900B89760 /* ReviewBodyViewCell.xib in Resources */,
 				F46185AE26A8882400B89760 /* ProductCartViewCell.xib in Resources */,
+				F4F80D0D26B00AFC009544B0 /* GoogleService-Info.plist in Resources */,
 				F46185A626A6EA2600B89760 /* ProductImageViewCell.xib in Resources */,
 				F46185B226A8B0CF00B89760 /* ReviewCaptionViewCell.xib in Resources */,
 				F4E9984326AB2FD20086D987 /* CartPayViewCell.xib in Resources */,
@@ -629,6 +639,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4F80D0E26B00B54009544B0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +647,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4F80D0F26B00B54009544B0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,6 +754,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F4F80D1026B02CFE009544B0 /* Firebase */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = Firebase;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -757,6 +789,7 @@
 				F4DD9BE22684A99000126EE1 /* OnlyResult.swift in Sources */,
 				F460CF562694A6FE006AB87D /* ProductBasket.swift in Sources */,
 				F4DD9BE42684B5F800126EE1 /* RegisterUserResult.swift in Sources */,
+				F4F80D1226B04983009544B0 /* AnalyticsLogging.swift in Sources */,
 				F496E538269F5222007AA9AB /* Logging.swift in Sources */,
 				F49D3E6526A45B1A00AE8654 /* CatalogViewCell.swift in Sources */,
 				F4E355A42691CC6A0037083D /* LoginViewController.swift in Sources */,
@@ -958,6 +991,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = YKX9VWS6ZS;
 				INFOPLIST_FILE = GBShopping/Environments/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

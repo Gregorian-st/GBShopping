@@ -94,6 +94,7 @@ class ProductViewController: UIViewController {
                 switch response.result {
                 case .success(let addToBasketResult):
                     logging(addToBasketResult)
+                    logAnalytics(messageType: .productAddToCart, messageText: "Product id=\(productId) added to cart")
                 case .failure(let error):
                     logging(error.localizedDescription)
                     showAlert(alertMessage: "Wrong server response!", viewController: self)
