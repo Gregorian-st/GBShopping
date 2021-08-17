@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21FA17F136849AEEC23FEBC9 /* Pods_GBShopping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC6972F1EFAE0DEFF811D784 /* Pods_GBShopping.framework */; };
 		6F7D9D10B0844100A7FEE5DA /* Pods_GBShoppingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B66220ACE7D12B7896E291 /* Pods_GBShoppingTests.framework */; };
 		DE980776BE2018F9C2340627 /* Pods_GBShopping_GBShoppingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2CB62685F75072971F51A3 /* Pods_GBShopping_GBShoppingUITests.framework */; };
 		F432BEC2268A18E300FF58CF /* ProductTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F432BEC1268A18E300FF58CF /* ProductTests.swift */; };
@@ -81,6 +80,7 @@
 		F4F80D0E26B00B54009544B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4F80D0C26B00AFC009544B0 /* GoogleService-Info.plist */; };
 		F4F80D0F26B00B54009544B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4F80D0C26B00AFC009544B0 /* GoogleService-Info.plist */; };
 		F4F80D1226B04983009544B0 /* AnalyticsLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F80D1126B04983009544B0 /* AnalyticsLogging.swift */; };
+		F4F80D1326B17183009544B0 /* Pods_GBShopping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC6972F1EFAE0DEFF811D784 /* Pods_GBShopping.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,7 +195,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21FA17F136849AEEC23FEBC9 /* Pods_GBShopping.framework in Frameworks */,
+				F4F80D1326B17183009544B0 /* Pods_GBShopping.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
