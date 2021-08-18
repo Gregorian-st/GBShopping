@@ -156,6 +156,7 @@ SHOPPING</string>
                     <connections>
                         <outlet property="loginButton" destination="SHd-TL-qnC" id="erh-k8-M2m"/>
                         <outlet property="passwordTextField" destination="65L-DJ-tMR" id="HND-lQ-0Ng"/>
+                        <outlet property="registerButton" destination="o2V-kt-LHM" id="Qgo-nP-tkV"/>
                         <outlet property="scrollView" destination="wMq-LH-6Sl" id="eIT-0P-oRs"/>
                         <outlet property="usernameTextField" destination="zyh-Hn-gbC" id="SM6-Uc-RTv"/>
                     </connections>
