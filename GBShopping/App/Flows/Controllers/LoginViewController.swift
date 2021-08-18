@@ -11,6 +11,7 @@ class LoginViewController: UIViewController {
     
     private let requestFactory = RequestFactory()
     private let userData = UserData.instance
+    private var spinner = UIActivityIndicatorView()
     
     // MARK: - Outlets
     
@@ -40,6 +41,7 @@ class LoginViewController: UIViewController {
             loginButton.layer.cornerRadius = loginButton.frame.size.height / 2
         }
     }
+    @IBOutlet weak var registerButton: UIButton!
     
     // MARK: - Actions
     
@@ -102,14 +104,17 @@ class LoginViewController: UIViewController {
                         let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
                         mainTabBarController.modalPresentationStyle = .fullScreen
                         mainTabBarController.modalTransitionStyle = .flipHorizontal
+                        self.deactivateSpinner()
                         self.present(mainTabBarController, animated: true, completion: nil)
                     } else {
                         logAnalytics(messageType: .loginUnsuccessful, messageText: "Wrong user credentials")
                         showAlert(alertMessage: "Wrong credentials!", viewController: self)
+                        self.deactivateSpinner()
                     }
                 case .failure(let error):
                     logging(error.localizedDescription)
                     showAlert(alertMessage: "Wrong server response!", viewController: self)
+                    self.deactivateSpinner()
                 }
             }
         }
@@ -158,7 +163,33 @@ class LoginViewController: UIViewController {
             showAlert(alertMessage: "All fields must be filled out!", viewController: self)
             return
         }
+        activateSpinner()
         authLogin(login: loginText, password: passwordText, cookie: "")
+    }
+    
+    func activateSpinner() {
+        loginButton.isHidden = true
+        registerButton.isHidden = true
+        
+        spinner.style = .large
+        spinner.color = .systemGray2
+        spinner.hidesWhenStopped = true
+        view.addSubview(spinner)
+        
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([spinner.centerYAnchor.constraint(equalTo: loginButton.centerYAnchor),
+                                     spinner.centerXAnchor.constraint(equalTo: loginButton.centerXAnchor)])
+        
+        spinner.startAnimating()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
+            self.deactivateSpinner()
+        }
+    }
+    
+    func deactivateSpinner() {
+        loginButton.isHidden = false
+        registerButton.isHidden = false
+        spinner.stopAnimating()
     }
     
 }
